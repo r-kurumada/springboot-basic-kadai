@@ -1,0 +1,29 @@
+<!DOCTYPE buml>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>お問い合わせ</title>
+</head>
+<body>
+	<h2>お問い合わせフォーム</h2>
+	<form th:action="@{/confirm}" method="post" th:object="${contactForm}">
+	    <label>お名前：</label><br>
+	    <input type="text" th:field="*{userName}">
+	    <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color:red;"></div>
+		<br>
+		
+	    <label>メールアドレス：</label><br>
+	    <input type="text" th:field="*{mail}">
+	    <div th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color:red;"></div>
+		<br>
+		
+	    <label>お問い合わせ内容：</label><br>
+	    <textarea th:field="*{contact}" cols="30" rows="10"></textarea>
+	    <div th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}" style="color:red;"></div>
+ 		<br>
+ 
+ <button type="submit">送信</button>
+	</form>
+  	
+</body>
+</html>
